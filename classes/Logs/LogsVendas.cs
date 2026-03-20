@@ -1,15 +1,24 @@
-public class RegistroMinimalista : Logs
+public class RegistroMinimalista : Log
 {
-    public string DetalhesVenda;
+    public string DetalhesVenda = string.Empty;
     public RegistroMinimalista(LogLevels logLevel, ControlModule logConfig, string detalhesVenda) : base(logLevel, logConfig)
     {
-        DetalhesVenda = detalhesVenda;
     }
 
-    public override void Log(string message)
+    public override Log CreateLog(string message)
     {
-        // Implement logging logic here using LogLevel and LogConfig
-        // For example, write to a file or database based on LogConfig
-        Console.WriteLine($"[{LogLevel}] {message}");
+        Message = $"Venda realizada: {message}";
+        LogLevel = LogLevels.INFO;
+
+        return this;
+    }
+
+    public Log CreateSellLog(string message, string detalhesVenda)
+    {
+        Message = $"Venda realizada: {message}";
+        DetalhesVenda = detalhesVenda;
+        LogLevel = LogLevels.INFO;
+
+        return this;
     }
 }

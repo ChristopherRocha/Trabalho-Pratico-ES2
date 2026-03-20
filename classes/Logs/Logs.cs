@@ -1,13 +1,13 @@
-public abstract class Logs
+public abstract class Log
 {
     protected LogLevels LogLevel { get; set; }
-    protected ControlModule LogConfig { get; set; }
+    protected string Message { get; set; } = string.Empty;
 
-    public Logs(LogLevels logLevel, ControlModule logConfig)
+    public Log(LogLevels logLevel, ControlModule logConfig)
     {
         LogLevel = logLevel;
-        LogConfig = logConfig;
+
     }
 
-    public abstract void Log(string message);
+    public abstract Log CreateLog(string message);
 }

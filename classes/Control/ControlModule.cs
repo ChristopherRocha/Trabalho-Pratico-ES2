@@ -29,13 +29,33 @@ public class ControlModule
         _logOptions = logConfig;
     }
 
+    public string GetFilePath()
+    {
+        return _logOptions.LogFilePath;
+    }
+
+    public string GetLogFileFormat()
+    {
+        return _logOptions.LogFileFormat;
+    }
+
+    public string GetDbConnectionString()
+    {
+        return _logOptions.DbConnectionString;
+    }
+
+    public string GetAzureConnectionString()
+    {
+        return _logOptions.AzureConnectionString;
+    }
 
     public override string ToString()
     {
         string info = "";
         info+= $"Log File Path: {_logOptions.LogFilePath}\n";
-        info+= $"Log Format: {_logOptions.LogFormat}\n";
+        info+= $"Log Format: {_logOptions.LogFileFormat}\n";
         info+= $"DB Connection String: {_logOptions.DbConnectionString}\n";
+        info+= $"Azure Connection String: {_logOptions.AzureConnectionString}\n";
         return info;
     }
 

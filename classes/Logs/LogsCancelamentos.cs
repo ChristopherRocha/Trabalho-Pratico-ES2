@@ -1,4 +1,4 @@
-public class RegistroCompleto:Logs
+public class RegistroCompleto:Log
 {
     public string? DetalhesCancelamento;
 
@@ -6,10 +6,19 @@ public class RegistroCompleto:Logs
     {
     }
 
-    public override void Log(string message)
+    public override Log CreateLog(string message)
     {
-        // Implement logging logic here using LogLevel and LogConfig
-        // For example, write to a file or database based on LogConfig
-        Console.WriteLine($"[{LogLevel}] {message}");
+        Message = $"Cancelamento realizado: {message}";
+        LogLevel = LogLevels.WARNING;
+        return this;
+    }
+
+    public Log CreateCancelLog(string message, string detalhesCancelamento)
+    {
+        Message = $"Cancelamento realizado: {message}";
+        DetalhesCancelamento = detalhesCancelamento;
+        LogLevel = LogLevels.WARNING;
+
+        return this;
     }
 }
